@@ -1,3 +1,3 @@
-# ypapkplusplus
+# ypakpplusplus
 
-A modern & user-friendly redesign of ypapk.gr
+A modern & user-friendly redesign of ypakp.gr
