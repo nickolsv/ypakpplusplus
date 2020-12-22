@@ -6,4 +6,5 @@
 
 .navitem{
     display: inline-block;
+    cursor: pointer;
 }
