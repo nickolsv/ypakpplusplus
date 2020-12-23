@@ -6,12 +6,13 @@ import Navdropdown from './Navdropdown';
 class Navbar extends React.Component {
 
     state = {
-        dropDownVisible: false,
-        visibleID: 1
+        dropDownVisible: false,         // Bool - Whether a navbar element is expanded
+        visibleID: 1                    // ID of expanded navbar element (if any)
     }
 
     dropDownDrop(clickedID)
     {
+        // Expands/hides the clicked navigation bar item
         var newState = Object.assign({},this.state);
 
         if( this.state.dropDownVisible )
