@@ -1,8 +1,17 @@
 .footer{
-    width:100%
+    width:100%;
+    position: relative;
+    margin-top: auto;
+    height: 100 px;
+    
 }
 
 .footeritem{
     font: Helvetica;
-    font-size: xx-large;
+    cursor: pointer;
+}
+
+.flag{
+    height: 30px;
+    margin-right: 10px;
 }

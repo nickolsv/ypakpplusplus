@@ -13,6 +13,10 @@ function Footer() {
             <div className="footeritem">
                 <p>About</p>
             </div>
+            <div>
+                <img className = "flag" src="images/GreekFlag.svg" alt="Greek flag" />
+                <img className = "flag" src="images/EnglishFlag.png" alt=" English flag" />
+            </div>
         </nav>
     );
 }
