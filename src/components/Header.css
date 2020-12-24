@@ -1,0 +1,11 @@
+.header-logo {
+    width: 300px;
+}
+
+.header-item {
+    display: inline-block;
+}
+
+.header-right {
+    float: right;
+}
