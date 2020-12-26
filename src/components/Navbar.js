@@ -32,17 +32,51 @@ class Navbar extends Component {
 
     render()
     {
-        var optionArray = [this.state.visibleID];
+        var dropdownLinks = [[
+                                {   title: null, 
+                                    links: [
+                                        {title: "Test1", href: "/test1"}, 
+                                        {title: "Test2", href: "/test2"}]
+                                },
+                                {   title: null, 
+                                    links: [
+                                        {title: "Test3", href: "/test3"}, 
+                                        {title: "Test4", href: "/test4"}]
+                                },
+                            ],
+                            [
+                                {   title: "Title1", 
+                                    links: [
+                                        {title: "TitleTest1", href: "/ttest1"}, 
+                                        {title: "TitleTest2", href: "/ttest2"}]
+                                },
+                                {   title: "Title2", 
+                                    links: [
+                                        {title: "TitleTest3", href: "/ttest3"}, 
+                                        {title: "TitleTest4", href: "/ttest4"}]
+                                },
+                            ],
+                            [
+                                {   title: "Title3", 
+                                    links: [
+                                        {title: "TitleTest5", href: "/ttest5"}, 
+                                        {title: "TitleTest6", href: "/ttest6"}, 
+                                        {title: "TitleTest7", href: "/ttest7"}]
+                                },
+                            ],
+                        ]
+        
+        var optionArray = dropdownLinks[this.state.visibleID];
         return(
             <div>
                 <nav className="navbar">
-                    <div className="navitem" onClick={ () => this.dropDownDrop(1) }>
+                    <div className="navitem" onClick={ () => this.dropDownDrop(0) }>
                         <p>ΘΕΜΑΤΑ</p>
                     </div>
-                    <div className="navitem" onClick={ () => this.dropDownDrop(2) }>
+                    <div className="navitem" onClick={ () => this.dropDownDrop(1) }>
                         <p>ΥΠΗΡΕΣΙΕΣ</p>
                     </div>
-                    <div className="navitem" onClick={ () => this.dropDownDrop(3) }>
+                    <div className="navitem" onClick={ () => this.dropDownDrop(2) }>
                         <p>ΕΠΙΚΟΙΝΩΝΙΑ</p>
                     </div>
                 </nav>
