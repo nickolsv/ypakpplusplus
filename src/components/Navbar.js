@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './Navbar.css';
 import './Navdropdown';
 import Navdropdown from './Navdropdown';
 
-class Navbar extends React.Component {
+class Navbar extends Component {
 
     state = {
         dropDownVisible: false,         // Bool - Whether a navbar element is expanded
@@ -36,13 +36,13 @@ class Navbar extends React.Component {
         return(
             <div>
                 <nav className="navbar">
-                    <div className="navitem" onClick={() => this.dropDownDrop(1) }>
+                    <div className="navitem" onClick={ () => this.dropDownDrop(1) }>
                         <p>ΘΕΜΑΤΑ</p>
                     </div>
-                    <div className="navitem" onClick={() => this.dropDownDrop(2) }>
+                    <div className="navitem" onClick={ () => this.dropDownDrop(2) }>
                         <p>ΥΠΗΡΕΣΙΕΣ</p>
                     </div>
-                    <div className="navitem" onClick={() => this.dropDownDrop(3) }>
+                    <div className="navitem" onClick={ () => this.dropDownDrop(3) }>
                         <p>ΕΠΙΚΟΙΝΩΝΙΑ</p>
                     </div>
                 </nav>
