@@ -6,9 +6,10 @@
     
 }
 
-.footeritem{
+.footer-links{
     font: Helvetica;
     cursor: pointer;
+    list-style: none;
 }
 
 .flag{
