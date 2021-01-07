@@ -1,0 +1,9 @@
+.profile{
+    cursor: pointer;
+}
+
+.profile-links{
+    font: Helvetica;
+    cursor: pointer;
+    list-style: none;
+}
