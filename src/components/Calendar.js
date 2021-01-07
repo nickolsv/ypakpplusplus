@@ -84,10 +84,10 @@ function getDaysSinceEpoch(month,year) {
 // TODO: CalendarDay classes for Days Off/Working/Remote -- CalendarType-dependent
 
 
-function CalendarDay() {
+function CalendarDay(props) {
     return(
-        <td className={this.props.class} onClick={() => this.props.onDateSelect(this.props.dayNumber) }>
-            {this.props.dayNumber}
+        <td className={props.class} onClick={() => props.onDateSelect(props.dayNumber) }>
+            {props.dayNumber}
         </td>
     )
 }
