@@ -1,0 +1,7 @@
+.timeslot-unavailable {
+    color: grey;
+}
+
+.timeslot-selected {
+    color: blue
+}
