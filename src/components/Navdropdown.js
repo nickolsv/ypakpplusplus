@@ -5,6 +5,7 @@ function NavdropdownColumn(props) {
     var title = null;
     if( props.title != null )   title = (<div className="nav-col-title">{props.title}</div>)
     
+    // TODO Change <a href> to <links>
     var renderArray = [];
     props.links.forEach(link => {
         renderArray.push(<a className="nav-col-element" href={link.href}>{link.title}</a>)
