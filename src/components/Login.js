@@ -41,7 +41,7 @@ class Login extends Component {
                 <div>
                     <p>
                         Εναλλακτικά, 
-                        <a>Συνδεθείτε Εδώ</a> 
+                        <a href="/" >Συνδεθείτε Εδώ</a> 
                     </p>
                 </div>
             </div>
