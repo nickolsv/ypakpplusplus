@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import Profile from './Profile';
 
 import './Header.css';
 
@@ -8,10 +9,9 @@ function Header() {
             <Link to="/">
                 <img className="header-logo header-item header-left" src="./images/logo.jpg" alt="Website Logo"></img>
             </Link>
-            <div className="header-profile header-item header-right">
-                Placeholder
-            </div>
+            <Profile/>
         </div>
+        
     );
 }
 

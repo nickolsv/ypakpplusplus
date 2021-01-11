@@ -13,7 +13,7 @@ function Footer() {
                 <Link to='/about'>
                     <li>About</li>
                 </Link>
-                <Link to='terms'>
+                <Link to='/terms'>
                     <li>Όροι Χρήσης</li>
                 </Link>
             </ul>
