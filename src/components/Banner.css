@@ -1,9 +1,31 @@
-.more-button{
-    padding:60px;
-    text-align: right;
-    background-image: url("../images/Doctor2.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position-y: 30%;
-    background-position-x: 10%;
+.banner-image{
+    height: 360px;
+    width: 100%;
+}
+
+.learn-more{
+    font-size: large;
+    position: absolute;
+    right:300px;
+    top:350px;
+    background-color: rgba(80, 170, 255, 0.932);
+    color:white;
+    text-align: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border:2px solid rgb(255, 255, 255);
+    border-radius: 8px;
+}
+
+.learn-more:visited{
+    color: #ffffffe1;
+}
+
+.information{
+    font-size:x-large;
+    position: absolute;
+    left: 50px;
+    top:325px;
 }

@@ -3,12 +3,18 @@ import './Banner.css';
 import {Link} from 'react-router-dom';
 
 function Banner(){
-    return(
-
-        <div className = "more-button">
-            <Link to='/covid19info'>
-                <h3> Μάθετε Περισσότερα </h3>
-            </Link>
+    return(        
+        <div>
+            <img className="banner-image" src="images/Doctors.png"/>
+            <div class="learn-more">
+                <Link to='/covid19info'>
+                    Μάθετε Περισσότερα
+                </Link>
+            </div>
+            <div class="information">
+                <p>Όλες οι πληροφρίες που πρέπει να γνωρίζετε</p>
+                <p>σχετικά με τον covid-19 και το μέρος που εργάζεστε.</p>
+            </div>
         </div>
     )
 }
