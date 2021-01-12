@@ -1,5 +1,9 @@
 .more-button{
     padding:60px;
     text-align: right;
-    background-image: url("/images/Doctor.png");
+    background-image: url("../images/Doctor2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: 30%;
+    background-position-x: 10%;
 }
