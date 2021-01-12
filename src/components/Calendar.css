@@ -1,3 +1,47 @@
 .date-selected {
-    color: red;
+    color: white;
+    background-color: deepskyblue;
+}
+
+.calendar-element {
+    display: inline-block;
+}
+
+.calendar-month {
+    text-align: center;
+}
+
+.calendar-nav {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.calendar-navbutton {
+    color: white;
+    background-color: deepskyblue;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    user-select: none;
+
+}
+
+.calendar-table {
+    border-collapse: collapse;
+    table-layout: fixed ;
+    width: 100%;
+    min-width: 600px;
+}
+
+.calendar-day {
+    border: 1px solid gray;
+    height: 50px;
+    cursor: default;
+    user-select: none;
+}
+
+.calendar-day:not(.calendar-day-empty) {
+    cursor: pointer;
 }
