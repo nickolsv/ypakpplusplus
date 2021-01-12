@@ -85,10 +85,16 @@ function getDaysSinceEpoch(month,year) {
 
 
 function CalendarDay(props) {
+    var returnVal = (<td className={`calendar-day ${props.class}`} onClick={() => props.onDateSelect(props.dayNumber) }>
+                        {props.dayNumber}
+                    </td>);
+    console.log(props.dayNumber)
+    if( props.dayNumber === undefined)
+        returnVal = (<td className={`calendar-day calendar-day-empty`}> </td>);
     return(
-        <td className={props.class} onClick={() => props.onDateSelect(props.dayNumber) }>
-            {props.dayNumber}
-        </td>
+        <>
+            {returnVal}
+        </>
     )
 }
 
@@ -166,12 +172,12 @@ class CalendarMonth extends Component{
         // Pad the end of the last row with calendar days
         if( currElem !== []){
             while(currElem.length < 7)
-                currElem.push(<CalendarDay />);
+                currElem.push(<CalendarDay class={"calendar-day-empty"} onDateSelect={null}/>);
             result.push(<tr>{currElem}</tr>) 
         }
     
         return(
-            <table>
+            <table className="calendar-table">
                 <thead>
                     {resultHead}
                 </thead>
@@ -276,12 +282,13 @@ class Calendar extends Component {
         };
 
         return(
-            <div>
-                <div> {monthsList[this.state.month]} {this.state.year}</div>
+            <div className="calendar-element">
+                <div className="calendar-month"> {monthsList[this.state.month]} {this.state.year}</div>
                 <CalendarMonth year={this.state.year} month={this.state.month} onDateSelect={this.dateSelector} selectProps={selectProps}/>
-                <span onClick={() => this.monthChange(-1)}>&lt;</span>
-                <span onClick={() => this.monthChange(1)}>&gt;</span>
-                
+                <div className="calendar-nav">
+                    <span className="calendar-navbutton" onClick={() => this.monthChange(-1)}>&lt;</span>
+                    <span className="calendar-navbutton" onClick={() => this.monthChange(1)}>&gt;</span>
+                </div>
             </div>
         )
     }
