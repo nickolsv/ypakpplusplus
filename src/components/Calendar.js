@@ -88,7 +88,6 @@ function CalendarDay(props) {
     var returnVal = (<td className={`calendar-day ${props.class}`} onClick={() => props.onDateSelect(props.dayNumber) }>
                         {props.dayNumber}
                     </td>);
-    console.log(props.dayNumber)
     if( props.dayNumber === undefined)
         returnVal = (<td className={`calendar-day calendar-day-empty`}> </td>);
     return(
@@ -114,6 +113,7 @@ class CalendarMonth extends Component{
         // Get current Year and Month
         var year = Number(this.props.year);
         var month = Number(this.props.month);
+        var rowCount = 1;
     
         // Get number of days in month as well as
         // what day is the first day of the current month
@@ -140,10 +140,11 @@ class CalendarMonth extends Component{
         while(currDay < days)
         {
             // If Sunday is reached, move on to the next row
-            if( (currDay + dayOfWeek) % 7 === 0 )
+            if( currDay != 0 && (currDay + dayOfWeek) % 7 === 0)
             {
                 result.push(<tr>{currElem}</tr>) 
                 currElem = [];
+                rowCount+=1;
             }
 
             // Only the days before selectEnd and after selectStart (inclusive) 
@@ -170,10 +171,18 @@ class CalendarMonth extends Component{
         }
     
         // Pad the end of the last row with calendar days
-        if( currElem !== []){
+        while(currElem.length < 7)
+            currElem.push(<CalendarDay class={"calendar-day-empty"} onDateSelect={null}/>);
+        result.push(<tr>{currElem}</tr>) 
+        
+        console.log(rowCount)
+        while( rowCount < 6 )
+        {
+            currElem = [];
             while(currElem.length < 7)
                 currElem.push(<CalendarDay class={"calendar-day-empty"} onDateSelect={null}/>);
-            result.push(<tr>{currElem}</tr>) 
+            result.push(<tr>{currElem}</tr>)
+            rowCount+=1
         }
     
         return(
