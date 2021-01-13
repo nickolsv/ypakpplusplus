@@ -19,7 +19,7 @@
     border-radius: 8px;
 }
 
-.learn-more:visited{
+.learn-more-link:visited{
     color: #ffffffe1;
 }
 
@@ -27,5 +27,5 @@
     font-size:x-large;
     position: absolute;
     left: 50px;
-    top:325px;
+    top: 325px;
 }

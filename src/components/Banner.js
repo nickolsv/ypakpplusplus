@@ -6,12 +6,12 @@ function Banner(){
     return(        
         <div>
             <img className="banner-image" src="images/Doctors.png"/>
-            <div class="learn-more">
-                <Link to='/covid19info'>
+            <div className="learn-more">
+                <Link to='/covid19info' className="learn-more-link">
                     Μάθετε Περισσότερα
                 </Link>
             </div>
-            <div class="information">
+            <div className="information">
                 <p>Όλες οι πληροφρίες που πρέπει να γνωρίζετε</p>
                 <p>σχετικά με τον covid-19 και το μέρος που εργάζεστε.</p>
             </div>
