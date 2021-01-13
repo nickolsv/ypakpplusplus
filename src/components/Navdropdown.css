@@ -1,10 +1,17 @@
 .navdropdown {
+    position: absolute;
+    width: calc(100% - 2px);
+    height: 360px;
+    z-index: 5;
+    background-color: white;
     border-style: solid;
     border-width: 1px;
     border-color: black;
     border-radius: 10px;
 }
 
-.navdropdown-item {
+.nav-col {
+    width: 33%;
+    display: inline-block;
     text-align: center;
 }
