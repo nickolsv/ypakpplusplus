@@ -12,7 +12,7 @@ function NavdropdownColumn(props) {
     });
 
     return(
-        <div>
+        <div className="nav-col">
             {title}
             {renderArray}
         </div>
