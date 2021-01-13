@@ -105,7 +105,7 @@ class AppointmentTimePicker extends Component {
                     });
                 }
 
-                if(this.state.selectedTime !== null && currTime.minsBetween(this.state.selectedTime) == 0)
+                if(this.state.selectedTime !== null && currTime.minsBetween(this.state.selectedTime) === 0)
                     isSelected = true;
 
                 timeSlotArray.push(<AppointmentTimeSlot appointmentStartHour={currTime.hour} appointmentStartMinute={currTime.minute} isAvailable={isAvailable} isSelected={isSelected} timeSelector={this.timeSelector} />);

@@ -140,7 +140,7 @@ class CalendarMonth extends Component{
         while(currDay < days)
         {
             // If Sunday is reached, move on to the next row
-            if( currDay != 0 && (currDay + dayOfWeek) % 7 === 0)
+            if( currDay !== 0 && (currDay + dayOfWeek) % 7 === 0)
             {
                 result.push(<tr>{currElem}</tr>) 
                 currElem = [];
