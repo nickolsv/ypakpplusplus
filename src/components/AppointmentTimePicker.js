@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './AppointmentTimePicker.css'
 
 class Time {
@@ -41,6 +42,8 @@ function AppointmentTimeSlot(props) {
 
     var time = new Time(props.appointmentStartHour, props.appointmentStartMinute);
 
+    // If timeslot is available, call the selector function onclick so that the picker can update its state
+    // (hour and minute are 0 padded )
     return(
         <li onClick={() => props.isAvailable ? props.timeSelector(time) : null } className={elementClass} >
             {("00" + props.appointmentStartHour).slice(-2)}
@@ -50,6 +53,14 @@ function AppointmentTimeSlot(props) {
     );
 }
 
+AppointmentTimeSlot.propTypes = {
+    isAvailable: PropTypes.bool,
+    isSelected: PropTypes.bool,
+    appointmentStartHour: PropTypes.number,
+    appointmentStartMinute: PropTypes.number,
+    timeSlotArray: PropTypes.func,
+};
+
 
 class AppointmentTimePicker extends Component {
 
@@ -58,23 +69,29 @@ class AppointmentTimePicker extends Component {
             selectedTime: null,
         }
 
-        // TODO: Request available times for each date from server in componentDidMount 
-        // and save in state
-
         componentDidMount()
         {
+            // Request unavailable timeslots for current date
+            // and save them in state
+            var requesturl = "http://localhost:3001/api/appointment/" + this.props.date.year + "-" + this.props.date.month + "-" + this.props.date.day;
 
-            var newState = Object.assign({},this.state);
-
-            var time = new Time(9,30)
-            newState.unavailableTimeArray.push(time);
-            time = new Time(11,0)
-            newState.unavailableTimeArray.push(time);
-
-            this.setState(newState)
-
+            fetch(requesturl)
+                .then( res => res.json())
+                .then(
+                    (result) => {
+                        var newState = Object.assign({},this.state);
+                        
+                        result.forEach(element => {
+                            var time = new Time(element.hour, element.minute);
+                            newState.unavailableTimeArray.push(time);
+                            this.setState(newState)
+                        });
+                    }
+                )
         }
 
+        // Function to be passed as prop to AppointmentTimeSlot, so that it can update AppointmentTimePicker's state
+        // with the selected time slot
         timeSelector = (selectedTime) => {
             var newState = Object.assign({},this.state);
 
@@ -86,30 +103,35 @@ class AppointmentTimePicker extends Component {
         render()
         {
             var timeSlotArray = [];
-            var currTime = new Time(this.props.appointmentData.startHour, this.props.appointmentData.startMin);
-            var endTime = new Time(this.props.appointmentData.endHour, this.props.appointmentData.endMin);
-            var interval = new Time(this.props.appointmentData.intervalHour ,this.props.appointmentData.intervalMin);
+            var aptmentData = this.props.appointmentData;
+            var currTime = new Time(aptmentData.startHour, aptmentData.startMin);
+            var endTime = new Time(aptmentData.endHour, aptmentData.endMin);
+            var interval = new Time(aptmentData.intervalHour, aptmentData.intervalMin);
+            var key=0;
 
+            // Generate the timeslots between starting time and ending time
+            // The interval between the timeslots is also passed in the appointmentData prop
             while( currTime.minsBetween(endTime) >= 0 )
             {
                 var isAvailable = true;
                 var isSelected = false;
                 
+                // Also if current timeslot is unavailable, mark it as such
                 if( this.state.unavailableTimeArray !== [] )
-                {
                     this.state.unavailableTimeArray.forEach(element => {
                         if( currTime.minsBetween(element) === 0)
-                        {
                             isAvailable = false;
-                        }
+                        
                     });
-                }
 
+                // If the current timeslot is selected, mark it as selected
                 if(this.state.selectedTime !== null && currTime.minsBetween(this.state.selectedTime) === 0)
                     isSelected = true;
 
-                timeSlotArray.push(<AppointmentTimeSlot appointmentStartHour={currTime.hour} appointmentStartMinute={currTime.minute} isAvailable={isAvailable} isSelected={isSelected} timeSelector={this.timeSelector} />);
+                // Push to the array of elements and move on to the next timeslot
+                timeSlotArray.push(<AppointmentTimeSlot key={key} appointmentStartHour={currTime.hour} appointmentStartMinute={currTime.minute} isAvailable={isAvailable} isSelected={isSelected} timeSelector={this.timeSelector} />);
                 currTime.addTime(interval.hour, interval.minute);
+                key+=1;
             }
         
 
@@ -121,6 +143,22 @@ class AppointmentTimePicker extends Component {
         
             
         }
+}
+
+AppointmentTimePicker.propTypes = {
+    date: PropTypes.shape({
+        year: PropTypes.number,
+        month: PropTypes.number,
+        day: PropTypes.number,
+    }),
+    appointmentData : PropTypes.shape({
+        startHour: PropTypes.number,
+        startMin: PropTypes.number,
+        endHour: PropTypes.number,
+        endMin: PropTypes.number,
+        intervalHour: PropTypes.number,
+        intervalMin: PropTypes.number,
+    }),
 }
 
 export default AppointmentTimePicker;
