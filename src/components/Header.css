@@ -1,7 +1,17 @@
+.header {
+    background-color: white;
+}
+
 .header-logo {
     width: 300px;
 }
 
 .header-item {
     display: inline-block;
+}
+
+.header-container {
+    position: sticky;
+    top: 0;
+    z-index: 9;
 }

@@ -10,11 +10,3 @@
     display: inline-block;
     cursor: pointer;
 }
-
-.navbar-container {
-    position: sticky;
-    top: 0;
-    z-index: 9;
-
-    
-}
