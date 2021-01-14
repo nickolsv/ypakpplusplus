@@ -1,34 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './AppointmentTimePicker.css'
-
-class Time {
-    constructor(hour, minute) {
-        this.hour = hour;
-        this.minute = minute;
-    }
-
-    addTime(hours, minutes) {
-        // Adds hours and minutes to current time
-
-        var finalMinute = minutes + this.minute
-        var finalHour = hours + this.hour + Math.floor(finalMinute/60);
-
-        finalMinute = finalMinute % 60;
-        finalHour = finalHour % 24
-
-        this.minute = finalMinute;
-        this.hour = finalHour;
-    }
-
-    minsBetween(anotherTime) {
-        // Return minutes between this time and anotherTime
-        // positive if anotherTime is after this one, otherwise negative
-
-        return anotherTime.hour*60 + anotherTime.minute - this.hour*60 - this.minute;
-    }
-    
-}
+import './AppointmentTimePicker.css';
+import {Time} from './DateTime.js';
 
 function AppointmentTimeSlot(props) {
 
@@ -45,7 +18,7 @@ function AppointmentTimeSlot(props) {
     // If timeslot is available, call the selector function onclick so that the picker can update its state
     // (hour and minute are 0 padded )
     return(
-        <li onClick={() => props.isAvailable ? props.timeSelector(time) : null } className={elementClass} >
+        <li onClick={() => props.isAvailable ? props.timeSelector(time) : null } className={`timeslot ${elementClass}`} >
             {("00" + props.appointmentStartHour).slice(-2)}
             :
             {("00" + props.appointmentStartMinute).slice(-2)}
@@ -66,7 +39,6 @@ class AppointmentTimePicker extends Component {
 
         state = {
             unavailableTimeArray : [],
-            selectedTime: null,
         }
 
         componentDidMount()
@@ -90,14 +62,9 @@ class AppointmentTimePicker extends Component {
                 )
         }
 
-        // Function to be passed as prop to AppointmentTimeSlot, so that it can update AppointmentTimePicker's state
-        // with the selected time slot
+        // Function to be passed as prop to AppointmentTimeSlot, so that it can pass selectedTime to parent component
         timeSelector = (selectedTime) => {
-            var newState = Object.assign({},this.state);
-
-            newState.selectedTime = selectedTime;
-
-            this.setState(newState);
+            this.props.timeSelector(selectedTime);
         }
 
         render()
@@ -125,7 +92,7 @@ class AppointmentTimePicker extends Component {
                     });
 
                 // If the current timeslot is selected, mark it as selected
-                if(this.state.selectedTime !== null && currTime.minsBetween(this.state.selectedTime) === 0)
+                if(this.props.selectedTime !== null && currTime.minsBetween(this.props.selectedTime) === 0)
                     isSelected = true;
 
                 // Push to the array of elements and move on to the next timeslot
@@ -136,7 +103,7 @@ class AppointmentTimePicker extends Component {
         
 
             return(
-                <div>
+                <div className="timePicker-element">
                     {timeSlotArray}
                 </div>
             );
@@ -159,6 +126,7 @@ AppointmentTimePicker.propTypes = {
         intervalHour: PropTypes.number,
         intervalMin: PropTypes.number,
     }),
+    timeSelector: PropTypes.func,
 }
 
 export default AppointmentTimePicker;

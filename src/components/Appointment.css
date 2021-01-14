@@ -1,0 +1,27 @@
+.appointment-container {
+    display: flex;
+    justify-content: center;
+}
+
+.appointment-button {
+    color: white;
+    background-color: deepskyblue;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 2px;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    width: 70px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    margin: auto;
+
+}
+
+@media only screen and (max-width: 740px) {
+    .appointment-container {
+        display: block;
+    }
+  }

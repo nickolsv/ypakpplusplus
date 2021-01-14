@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Date, getDaysSinceEpoch, getDaysOfMonth} from './DateTime.js';
 import './Calendar.css';
 
 const weekdaysList = {
@@ -26,61 +27,6 @@ const monthsList = {
     12: "Δεκέμβριος"
 }
 
-
-class Date {
-    
-    constructor(day, month, year) {
-        this.day = day;
-        this.month = month;
-        this.year = year;
-    }
-
-    daysBetween(anotherDate) {
-        // Return days between this date and anotherDate
-        // positive if anotherDate is after this one, otherwise negative
-
-        var daysSinceEpoch1 = getDaysSinceEpoch(this.month, this.year);
-        var daysSinceEpoch2 = getDaysSinceEpoch(anotherDate.month, anotherDate.year);
-
-        return ( daysSinceEpoch2 + anotherDate.day - 1) - (daysSinceEpoch1 + this.day - 1)
-    }
-
-}
-
-function getDaysOfMonth(month,year){
-    // Calculate number of days in each month
-    var days = 31;
-    if([4,6,9,11].indexOf(month) !== -1)
-        days = 30
-    else if( month === 2)
-        if( !isLeapYear(year) )
-            days = 28
-        else
-            days = 29
-
-    return days;
-}
-
-function isLeapYear(year) {
-    // Returns whether year is a leap year
-    return !((year % 4 !== 0) || (year % 100 === 0 && year % 400 !== 0 ));
-}
-
-function getDaysSinceEpoch(month,year) {
-    // Get number of days from 1/1/1970 to 1/month/year
-    var days = 0;
-    var fullYears = year - 1970;
-    
-    days += fullYears*365 + Math.floor((fullYears+1) / 4) - Math.floor((fullYears+69) / 100) + Math.floor(Math.abs(fullYears+369) / 400);
-    for (let index = 0; index < month - 1; index++) {
-        days += getDaysOfMonth(index+1,year)
-        
-    }
-
-    return days;
-}
-
-
 // TODO: CalendarDay classes for Days Off/Working/Remote -- CalendarType-dependent
 
 
@@ -96,6 +42,7 @@ function CalendarDay(props) {
         </>
     )
 }
+
 
 class CalendarMonth extends Component{
 
@@ -175,7 +122,6 @@ class CalendarMonth extends Component{
             currElem.push(<CalendarDay class={"calendar-day-empty"} onDateSelect={null}/>);
         result.push(<tr>{currElem}</tr>) 
         
-        console.log(rowCount)
         while( rowCount < 6 )
         {
             currElem = [];
@@ -268,6 +214,7 @@ class Calendar extends Component {
                 newState.selectStart = selectedDate;
                 newState.selectEnd = null;
             }
+            this.props.dateSelector(newState.selectStart,newState.selectEnd);
         }
         else if( this.props.type === "single-select")
         {
@@ -278,6 +225,7 @@ class Calendar extends Component {
             // length 1
             newState.selectStart = selectedDate;
             newState.selectEnd = selectedDate;
+            this.props.dateSelector(selectedDate);
         }
         this.setState(newState);
     }
