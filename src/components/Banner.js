@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 function Banner(){
     return(        
         <div>
-            <img className="banner-image" src="images/Doctors.png"/>
+            <img className="banner-image" src="images/Doctors.png" alt="Doctors"/>
             <div className="learn-more">
                 <Link to='/covid19info' className="learn-more-link">
                     Μάθετε Περισσότερα
@@ -23,6 +23,7 @@ function BannerLink(){
     return(
         <div>
             <h1> Covid Page</h1>
+            <img className="covid-image" src="images/guide.jpg" alt="Covid guide"/>
         </div>
     )
 

@@ -4,8 +4,7 @@ import {Link} from 'react-router-dom';
 
 function Footer() {
     return(
-        <nav>
-            <h3> Footer</h3>
+        <nav className="footer">
             <ul className="footer-links">
                 <Link to='/contact'>
                     <li> Επικοινωνία</li>

@@ -5,7 +5,7 @@ import './Report.css';
 function ReportLink(){
     return(
         <div classsName ="report-link">
-            <Link to='/reportpage'>
+            <Link to='/report'>
                 Αναφορά Παραβίασης
             </Link>
         </div>
@@ -27,6 +27,7 @@ function ReportPage(){
                 <input type="text" id="area" name="area"/><br/>
                 <label for="comments">Σχόλια :</label><br/>
                 <input type="text" id="comments" name="comments" className="sxolia"/><br/>
+                <button type="submit">Υποβολή</button>
             </form>
         </div>
     );

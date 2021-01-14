@@ -3,16 +3,18 @@
     position: relative;
     margin-top: auto;
     height: 100 px;
-    
+    background-color: lightgray;
 }
 
 .footer-links{
     font: Helvetica;
     cursor: pointer;
     list-style: none;
+    /* background-color: lightgray; */
 }
 
 .flag{
     height: 30px;
     margin-right: 10px;
-    cursor: pointer;}
+    cursor: pointer;
+}
