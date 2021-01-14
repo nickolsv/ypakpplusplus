@@ -18,8 +18,8 @@ class Login extends Component {
         var endPoint = this.props.endPoint ? this.props.endPoint : "/login";
 
         var inputArray = []
-        inputArray.push(<input id="fname-input" type="text" placeHolder="Όνομα" required />)
-        inputArray.push(<input id="lname-input" type="text" placeHolder="Επώνυμο" required />)
+        inputArray.push(<input id="fname-input" type="text" placeholder="Όνομα" required />)
+        inputArray.push(<input id="lname-input" type="text" placeholder="Επώνυμο" required />)
 
         if( this.props.loginType === "1")   
             inputArray.push(<input id="afm-input" type="text" placeholder="ΑΦΜ" required pattern="[0-9]{10}" maxLength="10" minLength="10" />)
