@@ -1,0 +1,24 @@
+.title{
+    font-size: x-large;
+}
+.choices{
+    font-size: large;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: center;
+    border:2px solid black;
+    border-radius: 8px;
+    width: 200px;
+    margin-bottom: 2px;
+    /* background-color: ; */
+}
+
+.keimeno{
+    width: 50%;
+    border:2px solid black;
+    border-radius: 8px;
+}
+
+.choices-info{
+    display: flex;
+}
