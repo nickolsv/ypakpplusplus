@@ -66,9 +66,11 @@ class Navbar extends Component {
                             ],
                         ]
         
+        // The value of visibleID stored in the component's state corresponds to the index of the dropdownlinks array
+        // whose contents will be displayed. visibleID is changed through the dropDownDrop function
         var optionArray = dropdownLinks[this.state.visibleID];
         return(
-            <div>
+            <div className="navbar-container">
                 <nav className="navbar">
                     <div className="navitem" onClick={ () => this.dropDownDrop(0) }>
                         <p>ΘΕΜΑΤΑ</p>
