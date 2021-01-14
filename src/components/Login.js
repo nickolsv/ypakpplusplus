@@ -5,6 +5,7 @@ class Login extends Component {
     componentDidMount()
     {
         var afm = document.getElementById("afm-input");
+        // Setting custom validity message
         if( afm != null)
         {
             afm.oninvalid = (e) => e.target.setCustomValidity("Το ΑΦΜ πρέπει να έιναι 10 ψηφία");
@@ -15,8 +16,11 @@ class Login extends Component {
 
     render() {
 
+        // /login as default endpoint, unless specified otherwise
         var endPoint = this.props.endPoint ? this.props.endPoint : "/login";
 
+        // There are two possible ways of authentication: The user has to either provide their afm number or
+        // their email and phone number. A full name is also required in both cases.
         var inputArray = []
         inputArray.push(<input id="fname-input" type="text" placeholder="Όνομα" required />)
         inputArray.push(<input id="lname-input" type="text" placeholder="Επώνυμο" required />)
