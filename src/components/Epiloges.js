@@ -32,7 +32,7 @@ class ChoicesPage extends Component{
         return(
             <div>
                 <p className="title">Επιλέξτε ένα απο τα παρακάτω θέματα:</p>
-                <div className="choices-info"></div>
+                <div className="choices-info">
                     <div className="choices">
                         <div className="choice-item" onClick={() => this.changeState(0)}>
                             <p>Τηλεργασία</p>
@@ -43,8 +43,9 @@ class ChoicesPage extends Component{
                         <div className="choice-item" onClick={() => this.changeState(2)}>
                             <p>Συμβάσεις Εργασίας</p>
                         </div>
+                    </div>
+                    <p className="keimeno">{choices[this.state.visibleID]}</p>
                 </div>
-                <p className="keimeno">{choices[this.state.visibleID]}</p>
             </div>
         )
     }

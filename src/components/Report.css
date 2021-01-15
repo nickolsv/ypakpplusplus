@@ -1,2 +1,25 @@
+.breadcrumb{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
+
+.selected{
+    color: deepskyblue;
+    text-decoration: underline;
+}
+
+.not-selected{
+    margin-right: 50px;
+    color: lightgray;
+}
+
 .sxolia{
+    width: 500px;
+    height:350px;
+}
+
+.forma{
+    text-align: center;
 }

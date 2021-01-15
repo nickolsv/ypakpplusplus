@@ -15,8 +15,12 @@ function ReportLink(){
 function ReportPage(){
     return(
         <div>
+            <div className="breadcrumb">
+                <p className="not-selected">Υπηρεσίες</p>
+                <p className="selected">Αναφορά Παραβίασης</p>
+            </div>
             <h1>Αναφορά Κινδύνου/Παραβίασης Νόμου</h1>
-            <form>
+            <form className="forma">
                 <label for="first-name">Όνομα :</label><br/>
                 <input type="text" id="first-name" name="first-name"/><br/>
                 <label for="last name"> Επίθετο :</label><br/>

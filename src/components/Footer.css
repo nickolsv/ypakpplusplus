@@ -1,15 +1,18 @@
 .footer{
     width:100%;
-    position: relative;
     margin-top: auto;
     height: 100 px;
     background-color: lightgray;
+    position: absolute;
+    bottom: 0;
 }
 
 .footer-links{
     font: Helvetica;
     cursor: pointer;
     list-style: none;
+    font-size: large;
+    margin-top: 10px;
     /* background-color: lightgray; */
 }
 
@@ -17,4 +20,5 @@
     height: 30px;
     margin-right: 10px;
     cursor: pointer;
+    margin-left: 10px;
 }

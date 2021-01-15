@@ -1,0 +1,39 @@
+.title{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.contact{
+    font-size: large;
+    margin-left: 100px;
+    margin-top: 30px;
+    text-decoration: underline;
+}
+
+.info{
+    font-size:x-large;
+    margin-left: 100px;
+    margin-top: 5px;
+}
+
+.working-time{
+    text-align:center;
+    font-size: large;
+}
+
+.appointment{
+    display:flex;
+}
+
+.contact2{
+    font-size:large;
+    margin-top:30px;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+.rantevou{
+    margin-top: 30px;
+    margin-left: 5px;
+    font-size: large;
+}
