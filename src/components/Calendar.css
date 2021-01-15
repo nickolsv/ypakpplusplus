@@ -25,7 +25,6 @@
     border-radius: 2px;
     cursor: pointer;
     user-select: none;
-
 }
 
 .calendar-table {
@@ -33,6 +32,8 @@
     table-layout: fixed ;
     width: 100%;
     min-width: 600px;
+    max-width: 1300px;
+
 }
 
 .calendar-day {

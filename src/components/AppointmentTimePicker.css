@@ -4,19 +4,31 @@
 
 .timeslot-unavailable {
     color: grey;
+    background-color: rgb(214, 214, 214);
 }
 
 .timeslot-selected {
-    color: deepskyblue
+    color: white;
+    background-color: deepskyblue;
 }
 .timePicker-element {
-    margin-left: 100px;
-    margin-right: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
     margin-top: 20px;
+    overflow-y: scroll;
+    max-height: 330px;
+    margin: auto;
 }
 
 .timeslot {
+    height: 20px;
+    width: 90px;
     list-style: none;
     user-select: none;
     cursor: pointer;
+    border: 1px solid black;
+    padding-top: 3px;
+    border-radius: 3px;
+    margin-bottom: 3px;
+    text-align: center;
 }
