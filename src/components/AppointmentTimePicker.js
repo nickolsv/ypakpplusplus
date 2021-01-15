@@ -62,6 +62,31 @@ class AppointmentTimePicker extends Component {
                 )
         }
 
+        componentDidUpdate(prevProps)
+        {
+            var dateChanged = (prevProps.date.month !== this.props.date.month || prevProps.date.year !== this.props.date.year || prevProps.date.day !== this.props.date.day )
+            if( dateChanged )
+            {
+                var requesturl = "http://localhost:3001/api/appointment/" + this.props.date.year + "-" + this.props.date.month + "-" + this.props.date.day;
+
+                fetch(requesturl)
+                    .then( res => res.json())
+                    .then(
+                        (result) => {
+                            var newUnavailable = [];
+                            var newState = Object.assign({},this.state);
+                            
+                            result.forEach(element => {
+                                var time = new Time(element.hour, element.minute);
+                                newUnavailable.push(time);
+                                newState.unavailableTimeArray= newUnavailable;
+                                this.setState(newState)
+                            });
+                        }
+                    )
+            }
+        }
+
         // Function to be passed as prop to AppointmentTimeSlot, so that it can pass selectedTime to parent component
         timeSelector = (selectedTime) => {
             this.props.timeSelector(selectedTime);

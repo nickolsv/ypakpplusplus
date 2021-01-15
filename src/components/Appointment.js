@@ -23,7 +23,7 @@ class Appointment extends Component {
         var newState = Object.assign({},this.state);
 
         newState.selectedDate = selectedDate;
-
+        newState.selectedTime = null;
         this.setState(newState);
     }
 
@@ -37,17 +37,11 @@ class Appointment extends Component {
             intervalMin: 30,
         }
 
-        var date = {
-        year: 2020,
-        month: 10,
-        day: 1
-        }
-
         return(
             <div>
                 <div className="appointment-container" >
                     <Calendar type={"single-select"} dateSelector={this.dateSelector} />
-                    { (this.state.selectedDate === null) ? null : <AppointmentTimePicker appointmentData={appointmentData} selectedTime={this.state.selectedTime} date={date} timeSelector={this.timeSelector} /> }
+                    { (this.state.selectedDate === null) ? null : <AppointmentTimePicker appointmentData={appointmentData} selectedTime={this.state.selectedTime} date={this.state.selectedDate} timeSelector={this.timeSelector} /> }
                 </div>
             { (this.state.selectedTime === null) ? null : <div className="appointment-button">Αποστολή</div>}
             </div>
