@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './Profile.css';
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
 class Profile extends Component{
 
     state = {
@@ -36,7 +37,9 @@ class Profile extends Component{
                         </nav>);
         return (
             <div className="profile" onClick={ () => this.dropdownDrop()}>
-                <p>Profile icon here</p>
+                <div className="user">
+                    <FontAwesomeIcon icon={faUserCircle}/>
+                </div>
                 {this.state.dropdownVisible ? profile : null}
             </div>
         );

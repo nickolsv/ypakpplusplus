@@ -33,9 +33,9 @@ class ChoicesPage extends Component{
             <div>
                 <div className="breadcrumb">
                     <Link to = "/" className="not-selected">Θέματα</Link>
-                    <p className="arrow">>></p>
+                    <p className="arrow">&gt;&gt;</p>
                     <p>covid-19</p>
-                    <p className="arrow">>></p>
+                    <p className="arrow">&gt;&gt;</p>
                     <p className="selected">Πληροφόριση για τις επιλογές των εργαζομένων</p>
                 </div>
                 <p className="title">Επιλέξτε ένα απο τα παρακάτω θέματα:</p>

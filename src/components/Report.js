@@ -17,7 +17,7 @@ function ReportPage(){
         <div>
             <div className="breadcrumb">
                 <Link to = "/" className="not-selected">Υπηρεσίες</Link>
-                <p>>></p>
+                <p>&gt;&gt;</p>
                 <p className="selected">Αναφορά Παραβίασης</p>
             </div>
             <h1>Αναφορά Κινδύνου/Παραβίασης Νόμου</h1>

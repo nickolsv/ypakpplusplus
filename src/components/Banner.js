@@ -12,7 +12,7 @@ function Banner(){
                 </Link>
             </div>
             <div className="information">
-                <p>Όλες οι πληροφρίες που πρέπει να γνωρίζετε</p>
+                <p>Όλες οι πληροφoρίες που πρέπει να γνωρίζετε</p>
                 <p>σχετικά με τον covid-19 και το μέρος που εργάζεστε.</p>
             </div>
         </div>
@@ -22,7 +22,13 @@ function Banner(){
 function BannerLink(){
     return(
         <div>
-            <h1> Covid Page</h1>
+            <div className="breadcrumb">
+                <Link to = "/" className="not-selected">Θέματα</Link>
+                <p className="arrow">&gt;&gt;</p>
+                <p>covid-19</p>
+                <p className="arrow">&gt;&gt;</p>
+                <p className="selected">Αντιμετώπιση του covid-19 στον εργασιακό χώρο</p>
+            </div>
             <img className="covid-image" src="images/guide.jpg" alt="Covid guide"/>
         </div>
     )
