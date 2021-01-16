@@ -16,7 +16,7 @@ function Footer() {
                     <li>Όροι Χρήσης</li>
                 </Link>
             </ul>
-            <div>
+            <div className="flags">
                 <img className = "flag" src="images/GreekFlag.svg" alt="Greek flag" />
                 <img className = "flag" src="images/EnglishFlag.png" alt=" English flag" />
             </div>
