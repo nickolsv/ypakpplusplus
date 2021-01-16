@@ -31,5 +31,9 @@
 }
 
 .covid-image{
-    width: 90%;
+    width: 60%;
+    /* align-items: center;
+    display: flex;
+    justify-content: center; */
+    margin-left: 400px;
 }

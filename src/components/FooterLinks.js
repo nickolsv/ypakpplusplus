@@ -8,6 +8,13 @@ import { Link } from 'react-router-dom';
 function Contact(){
     return(
         <div>
+            <div className="breadcrumb">
+                <Link to ="/" className="not selected">
+                    Αρχική Σελίδα 
+                </Link>
+                <p className="arrow">>></p>
+                <p className="selected">Επικοινωνία</p>
+            </div>
             <p className="title">Επικοινωνήστε μαζί μας με τους εξής τρόπους:</p>
             <p className="contact">Tηλεφωνικά στο:</p>
             <p className="info">21 3151 6649</p>

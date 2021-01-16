@@ -37,3 +37,28 @@
     margin-left: 5px;
     font-size: large;
 }
+
+.breadcrumb{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
+
+.selected{
+    color: deepskyblue;
+    text-decoration: underline;
+}
+
+.not-selected{
+    text-decoration: none;
+}
+
+.arrow{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.not-selected:visited{
+    color:black;
+}

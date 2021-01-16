@@ -8,11 +8,11 @@
 .selected{
     color: deepskyblue;
     text-decoration: underline;
+    margin-left: 10px;
 }
 
 .not-selected{
-    margin-right: 50px;
-    color: lightgray;
+    margin-right: 10px;
 }
 
 .sxolia{
@@ -22,4 +22,8 @@
 
 .forma{
     text-align: center;
+}
+
+.not-selected:visited{
+    color:black;
 }
