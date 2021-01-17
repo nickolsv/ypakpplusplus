@@ -27,19 +27,17 @@ class Profile extends Component{
     {
         var profile =(  <nav>
                             <ul className="profile-links">
-                                <Link to='/calendar'>
-                                    <li> Το Ημερολόγιό μου</li>
+                                <Link to='/calendar' className="link2">
+                                    <li className="link"> Το Ημερολόγιό μου</li>
                                 </Link>
-                                <Link to='/'>
-                                    <li>Αποσύνδεση</li>
+                                <Link to='/' className="link2">
+                                    <li className="link">Αποσύνδεση</li>
                                 </Link>
                             </ul>
                         </nav>);
         return (
             <div className="profile" onClick={ () => this.dropdownDrop()}>
-                <div className="user">
-                    <FontAwesomeIcon icon={faUserCircle}/>
-                </div>
+                <FontAwesomeIcon icon={faUserCircle} className="user"/>
                 {this.state.dropdownVisible ? profile : null}
             </div>
         );
