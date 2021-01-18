@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './Profile.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
 class Profile extends Component{
 
@@ -27,11 +27,11 @@ class Profile extends Component{
     {
         var profile =(  <nav>
                             <ul className="profile-links">
-                                <Link to='/calendar' className="link2">
-                                    <li className="link"> Το Ημερολόγιό μου</li>
+                                <Link to='/calendar' className="link">
+                                    <li> Το Ημερολόγιό μου</li>
                                 </Link>
-                                <Link to='/' className="link2">
-                                    <li className="link">Αποσύνδεση</li>
+                                <Link to='/' className="link">
+                                    <li>Αποσύνδεση</li>
                                 </Link>
                             </ul>
                         </nav>);

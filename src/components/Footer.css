@@ -28,3 +28,7 @@
     float: right;
     margin-top: 30px;
 }
+
+.link:visited{
+    color: #292929;
+}

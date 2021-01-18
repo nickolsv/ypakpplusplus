@@ -6,13 +6,13 @@ function Footer() {
     return(
         <nav className="footer">
             <ul className="footer-links">
-                <Link to='/contact'>
+                <Link to='/contact' className="link">
                     <li> Επικοινωνία</li>
                 </Link>
-                <Link to='/about'>
+                <Link to='/about' className="link">
                     <li>About</li>
                 </Link>
-                <Link to='/terms'>
+                <Link to='/terms' className="link">
                     <li>Όροι Χρήσης</li>
                 </Link>
             </ul>
