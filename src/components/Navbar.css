@@ -10,3 +10,10 @@
     display: inline-block;
     cursor: pointer;
 }
+
+.icon{
+    font-size: 100px;
+}
+ /* .text{
+    font-size:10px;
+ } */

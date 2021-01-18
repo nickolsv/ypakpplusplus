@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import './Navbar.css';
 import './Navdropdown';
 import Navdropdown from './Navdropdown';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faFolder, faToolbox, faPhone} from '@fortawesome/free-solid-svg-icons';
 
 class Navbar extends Component {
 
@@ -73,13 +75,16 @@ class Navbar extends Component {
             <div className="navbar-container">
                 <nav className="navbar">
                     <div className="navitem" onClick={ () => this.dropDownDrop(0) }>
-                        <p>ΘΕΜΑΤΑ</p>
+                        <FontAwesomeIcon icon={faFolder} className="icon"/>
+                        <p className="text">ΘΕΜΑΤΑ</p>
                     </div>
                     <div className="navitem" onClick={ () => this.dropDownDrop(1) }>
-                        <p>ΥΠΗΡΕΣΙΕΣ</p>
+                        <FontAwesomeIcon icon={faToolbox} className="icon"/>
+                        <p className="text">ΥΠΗΡΕΣΙΕΣ</p>
                     </div>
                     <div className="navitem" onClick={ () => this.dropDownDrop(2) }>
-                        <p>ΕΠΙΚΟΙΝΩΝΙΑ</p>
+                        <FontAwesomeIcon icon={faPhone} className="icon"/>
+                        <p className="text">ΕΠΙΚΟΙΝΩΝΙΑ</p>
                     </div>
                 </nav>
 
