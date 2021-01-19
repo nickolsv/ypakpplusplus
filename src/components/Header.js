@@ -10,7 +10,7 @@ function Header() {
                 <Link to="/">
                     <img className="header-logo header-item header-left" src="./images/logo2.png" alt="Website Logo"></img>
                 </Link>
-                <Profile/>
+                <Profile isLoggedIn={sessionStorage.getItem("afm")}/>
             </div>
             <Navbar />
         </div>

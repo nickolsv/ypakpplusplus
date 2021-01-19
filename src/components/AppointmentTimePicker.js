@@ -110,11 +110,17 @@ class AppointmentTimePicker extends Component {
                 
                 // Also if current timeslot is unavailable, mark it as such
                 if( this.state.unavailableTimeArray !== [] )
-                    this.state.unavailableTimeArray.forEach(element => {
+                    for (let index = 0; index < this.state.unavailableTimeArray.length; index++)
+                    {
+                        const element = this.state.unavailableTimeArray[index];
                         if( currTime.minsBetween(element) === 0)
-                            isAvailable = false;
+                        {
+                            isAvailable = false;                        
+                            break;
+                        }
                         
-                    });
+                    }
+
 
                 // If the current timeslot is selected, mark it as selected
                 if(this.props.selectedTime !== null && currTime.minsBetween(this.props.selectedTime) === 0)
