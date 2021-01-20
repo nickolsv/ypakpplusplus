@@ -101,8 +101,9 @@ class Workschedule extends Component {
                                 <option value="2">Άδεια </option>
                         </select>
                     <div className="workschedule-button-container2">
-                        <button disabled={this.state.startDate === null ? true : false} onClick={this.dateConfirm}>Επιλογή</button>
                         <button onClick={this.reset}>Επιστροφή</button>
+                        <button disabled={this.state.startDate === null ? true : false} onClick={this.dateConfirm}>Επιλογή</button>
+
                     </div>
             </div>)
         else if( this.state.stage === 2)
