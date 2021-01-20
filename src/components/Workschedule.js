@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import EmployeeSelector from './EmployeeSelector';
 import Calendar from './Calendar';
 import {serverAddress} from '../imports/global';
+import './Workschedule.css'
 
-
-// TODO: Display existing schedule on calendar
-// TODO: Display confirmation message before sending form
+var schType = {
+    0: "Εργασία",
+    1: "Τηλεργασία",
+    2: "Άδεια",
+}
 
 class Workschedule extends Component {
 
@@ -70,7 +73,7 @@ class Workschedule extends Component {
                 if( result.status === 200 )
                 {
                     var newState = Object.assign({},this.state);
-                    newState.stage = 2
+                    newState.stage = 3
                     this.setState(newState); 
                 }
             })
@@ -89,24 +92,29 @@ class Workschedule extends Component {
         if( this.state.stage === 0 )
             renderElem = (<EmployeeSelector employeeSelect={this.employeeSelect} />)
         else if( this.state.stage === 1 && this.state.employeeData !== null )
-            renderElem = (<div>
-                    <select name="role" id="role-select">
-                        <option value="0" selected>Εργασία</option>
-                        <option value="1">Τηλεργασία</option>
-                        <option value="2">Άδεια </option>
-                    </select>
+            renderElem = (<div className="workschedule-container workschedule-margin">
+
                 <Calendar type="range-select" displaySchedule={true} dateSelector={this.dateSelector} afm={this.state.employeeData.afm}/>
-                { this.state.startDate ? <button onClick={this.dateConfirm}> Επιλογή </button> : null}
-                <button onClick={this.reset}>Επιστροφή</button>
+                        <select name="role" id="role-select">
+                                <option value="0" selected>Εργασία</option>
+                                <option value="1">Τηλεργασία</option>
+                                <option value="2">Άδεια </option>
+                        </select>
+                    <div className="workschedule-button-container2">
+                        <button disabled={this.state.startDate === null ? true : false} onClick={this.dateConfirm}>Επιλογή</button>
+                        <button onClick={this.reset}>Επιστροφή</button>
+                    </div>
             </div>)
         else if( this.state.stage === 2)
-            renderElem = (<div> 
-                <p>Lul</p> 
-                <button onClick={this.reset}>Ακύρωση</button>
-                <button onClick={this.updateStatus}>Eπιβεβαίωση</button> 
+            renderElem = (<div className="workschedule-subcontainer"> 
+                <p>Πρόκειτε να θέσετε τον/την Εργαζόμενο/η {this.state.employeeData.firstname} {this.state.employeeData.lastname} σε {schType[this.state.scheduleType]} για το διάστημα {this.state.startDate.day}-{this.state.startDate.month}-{this.state.startDate.year} έως {this.state.endDate.day}-{this.state.endDate.month}-{this.state.endDate.year} </p> 
+                <div className="workschedule-button-container">
+                    <button onClick={this.reset}>Ακύρωση</button>
+                    <button onClick={this.updateStatus}>Eπιβεβαίωση</button> 
+                </div>
             </div>)
         else if( this.state.stage === 3)
-        renderElem = (<div>
+        renderElem = (<div className="workschedule-container">
                         <p>Η δήλωση πραγματοποιήθηκε με επιτυχία</p>
                         <button onClick={this.reset}>Επανάληψη</button> 
                     </div>)
@@ -118,9 +126,10 @@ class Workschedule extends Component {
 
     
         return(
-            <>
+            <div className="workschedule-container">
+                <h2> Δήλωση Αδειών/Τηλεργασίας Εργαζομένων</h2>
                 {renderElem}
-            </>
+            </div>
         )
     }
 }

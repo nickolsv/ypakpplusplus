@@ -31,3 +31,13 @@
     margin-top: 10px;
     margin-left: 30px;
 }
+
+.nav-icon-small{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.nav-col-element {
+    text-decoration: none;
+    color: dodgerblue;
+}

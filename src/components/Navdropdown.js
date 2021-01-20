@@ -10,7 +10,16 @@ function NavdropdownColumn(props) {
     
     var renderArray = [];
     props.links.forEach(link => {
-        renderArray.push(<Link onClick={props.closeDrop} className="nav-col-element" to={link.href}>{link.title}</Link>)
+        var pushElem =  <div onClick={props.closeDrop} className="nav-col-element">
+                            {link.icon}
+                            {link.title}
+                        </div>;
+        if( link.href !== "")
+            pushElem = (<Link onClick={props.closeDrop} className="nav-col-element" to={link.href}>
+                            {link.icon}
+                            {link.title}
+                        </Link>)
+        renderArray.push(pushElem)
     });
 
 

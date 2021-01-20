@@ -25,7 +25,7 @@ function BannerLink(){
             <div className="breadcrumb">
                 <Link to = "/" className="not-selected">Θέματα</Link>
                 <p className="arrow">&gt;&gt;</p>
-                <Link to = "/covid19" className="not-selected">covid-19</Link>
+                <Link to = "/covidpage" className="not-selected">covid-19</Link>
                 <p className="arrow">&gt;&gt;</p>
                 <p className="selected">Αντιμετώπιση του covid-19 στον εργασιακό χώρο</p>
             </div>

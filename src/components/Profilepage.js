@@ -29,7 +29,7 @@ class Profilepage extends Component {
             newState.email = res.email;
             newState.tel = res.tel;
             newState.role = res.roleid;
-            console.log(res);
+
             this.setState(newState);
         })
     }

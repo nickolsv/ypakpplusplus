@@ -4,7 +4,7 @@ import './Navbar.css';
 import './Navdropdown';
 import Navdropdown from './Navdropdown';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faFolder, faToolbox, faPhone} from '@fortawesome/free-solid-svg-icons';
+import {faFolder, faToolbox, faPhone, faEnvelope, faCalendar} from '@fortawesome/free-solid-svg-icons';
 
 class Navbar extends Component {
 
@@ -81,9 +81,9 @@ class Navbar extends Component {
                             [
                                 {   title: null, 
                                     links: [
-                                        {icon: "faPhone",    title: "21 3151 6649", href: ""}, 
-                                        {icon: "faEnvelope", title: "ypakp@ypakp.gr", href: ""}, 
-                                        {icon: "faCalendar", title: "Κλείνοντας ένα ραντεβόυ, Σταδίου 29, Αθήνα 105 59", href: "/appointment"}]
+                                        {icon: <FontAwesomeIcon icon={faPhone} className="nav-icon-small"/>,    title: "21 3151 6649", href: ""}, 
+                                        {icon: <FontAwesomeIcon icon={faEnvelope} className="nav-icon-small"/>, title: "ypakp@ypakp.gr", href: ""}, 
+                                        {icon: <FontAwesomeIcon icon={faCalendar} className="nav-icon-small"/>, title: "Κλείνοντας ένα ραντεβόυ, Σταδίου 29, Αθήνα 105 59", href: "/appointment"}]
                                 },
                             ],
                         ]
