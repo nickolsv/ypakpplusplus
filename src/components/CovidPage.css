@@ -1,0 +1,47 @@
+.subject{
+    display:flex;
+    margin-bottom: 25px;
+    margin-top: 50px;
+    border-bottom: 2px solid rgb(59, 59, 59);
+    padding-bottom: 20px;
+}
+
+.content{
+    display:flex;
+    justify-content: center;
+}
+
+.cov-text1{
+    font-size: 20px;
+    margin-right: 20px;
+}
+.cov-text2{
+    font-size: 20px;
+    margin-right: 86px;
+}
+
+.breadcrumb{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
+
+.selected{
+    color: deepskyblue;
+    text-decoration: underline;
+    /* margin-left: 10px; */
+}
+
+.not-selected{
+    text-decoration: none;
+}
+
+.arrow{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.not-selected:visited{
+    color:black;
+}

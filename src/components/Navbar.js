@@ -79,11 +79,11 @@ class Navbar extends Component {
                                 },
                             ],
                             [
-                                {   title: "Title3", 
+                                {   title: null, 
                                     links: [
-                                        {title: "TitleTest5", href: "/ttest5"}, 
-                                        {title: "TitleTest6", href: "/ttest6"}, 
-                                        {title: "TitleTest7", href: "/ttest7"}]
+                                        {icon: "faPhone",    title: "21 3151 6649", href: ""}, 
+                                        {icon: "faEnvelope", title: "ypakp@ypakp.gr", href: ""}, 
+                                        {icon: "faCalendar", title: "Κλείνοντας ένα ραντεβόυ, Σταδίου 29, Αθήνα 105 59", href: "/appointement"}]
                                 },
                             ],
                         ]
@@ -96,18 +96,18 @@ class Navbar extends Component {
             <div className="navbar-container">
                 <nav className="navbar">
                     <div className="navitem" onClick={ () => this.dropDownDrop(0) }>
-                        <FontAwesomeIcon icon={faFolder} className="icon"/>
+                        <FontAwesomeIcon icon={faFolder} className="nav-icon1"/>
                         <p className="text">ΘΕΜΑΤΑ</p>
                         { this.state.dropDownVisible && this.state.visibleID === 0 ? <Navdropdown closeDrop={this.closeDrop} options={optionArray}/> : null }
 
                     </div>
                     <div className="navitem" onClick={ () => this.dropDownDrop(1) }>
-                        <FontAwesomeIcon icon={faToolbox} className="icon"/>
+                        <FontAwesomeIcon icon={faToolbox} className="nav-icon2"/>
                         <p className="text">ΥΠΗΡΕΣΙΕΣ</p>
                         { this.state.dropDownVisible && this.state.visibleID === 1 ? <Navdropdown closeDrop={this.closeDrop} options={optionArray}/> : null }
                     </div>
                     <div className="navitem" onClick={ () => this.dropDownDrop(2) }>
-                        <FontAwesomeIcon icon={faPhone} className="icon"/>
+                        <FontAwesomeIcon icon={faPhone} className="nav-icon3"/>
                         <p className="text">ΕΠΙΚΟΙΝΩΝΙΑ</p>
                         { this.state.dropDownVisible && this.state.visibleID === 2 ? <Navdropdown closeDrop={this.closeDrop} options={optionArray}/> : null }
                     </div>

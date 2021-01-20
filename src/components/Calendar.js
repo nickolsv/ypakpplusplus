@@ -173,11 +173,6 @@ class Calendar extends Component {
         remoteDays: []
     }
 
-    constructor(props){
-        super(props)
-
-    }
-
     componentDidMount(){
         if( this.props.displaySchedule)
             this.getNewWorkschedule(1,2021)
