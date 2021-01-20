@@ -43,6 +43,9 @@ class Profile extends Component{
         if( isLoggedIn)
             profile =(  <nav>
                             <ul className="profile-links">
+                                <Link to='/profilepage' className="link">
+                                    <li> Το Προφίλ μου</li>
+                                </Link>
                                 <Link to='/calendar' className="link">
                                     <li> Το Ημερολόγιό μου</li>
                                 </Link>

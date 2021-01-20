@@ -3,14 +3,6 @@ import { Link } from 'react-router-dom';
 import './CovidPage.css'
 
 
-function CovidLink(){
-    return(
-        <Link to='/covid19'>
-            Covid-19
-        </Link>
-    );
-}
-
 function CovidPage() {
     return(
         <div>
@@ -43,7 +35,4 @@ function CovidPage() {
     );
 }
 
-export{
-    CovidLink,
-    CovidPage
-} 
+export default CovidPage;

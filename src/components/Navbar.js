@@ -59,7 +59,7 @@ class Navbar extends Component {
                                 },
                                 {   title: null, 
                                     links: [
-                                        {title: "Covid-19", href: "/choices"}]
+                                        {title: "Covid-19", href: "/covidpage"}]
                                 }
                             ],
                             [
@@ -83,7 +83,7 @@ class Navbar extends Component {
                                     links: [
                                         {icon: "faPhone",    title: "21 3151 6649", href: ""}, 
                                         {icon: "faEnvelope", title: "ypakp@ypakp.gr", href: ""}, 
-                                        {icon: "faCalendar", title: "Κλείνοντας ένα ραντεβόυ, Σταδίου 29, Αθήνα 105 59", href: "/appointement"}]
+                                        {icon: "faCalendar", title: "Κλείνοντας ένα ραντεβόυ, Σταδίου 29, Αθήνα 105 59", href: "/appointment"}]
                                 },
                             ],
                         ]

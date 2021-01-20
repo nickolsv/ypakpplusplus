@@ -15,6 +15,7 @@ import Anastoli from "./components/Anastoli";
 import Workschedule from "./components/Workschedule";
 import Calendar from './components/Calendar';
 import Profilepage from './components/Profilepage';
+import CovidPage from './components/CovidPage';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route exact={true} path="/contact" component={Contact} />
           <Route exact={true} path="/report" component={ReportPage}/>
           <Route exact={true} path="/choices" component={ChoicesPage}/>
+          <Route exact={true} path="/covidpage" component={CovidPage}/>
           <Route exact={true} path="/terms" component={Terms}/>
           <Route exact={true} path="/about" component={About}/>
 
