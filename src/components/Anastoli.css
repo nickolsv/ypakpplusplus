@@ -1,0 +1,11 @@
+.anastoli-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;   
+}
+
+.anastoli-button-container {
+    display: flex;
+    justify-content: space-evenly;
+}
