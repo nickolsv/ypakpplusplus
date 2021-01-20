@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 
 import Header from './components/Header';
-import Home from './components/Home';
 import Footer from './components/Footer';
 import {Banner, BannerLink} from './components/Banner';
 import Appointment from "./components/Appointment";
@@ -24,7 +23,6 @@ function App() {
         <Header />
 
         <Route exact={true} path="/">
-          <Home />
           <Banner />
         </Route>
 
