@@ -1,0 +1,16 @@
+CREATE DATABASE IF NOT EXISTS ypakp;
+
+CREATE USER `eamuser` IDENTIFIED WITH mysql_native_password BY 'EAM1EAM2eam#eam$';
+
+
+GRANT SELECT ON ypakp.* TO `eamuser`;
+GRANT INSERT ON ypakp.* TO `eamuser`;
+GRANT DELETE ON ypakp.* TO `eamuser`;
+GRANT UPDATE ON ypakp.* TO `eamuser`;
+GRANT EXECUTE ON ypakp.* TO `eamuser`;
+
+USE ypakp;
+
+CREATE TABLE company ( companyid INT NOT NULL AUTO_INCREMENT, companyname VARCHAR(100) NOT NULL, PRIMARY KEY (companyid));
+CREATE TABLE user ( firstname VARCHAR(25) NOT NULL, lastname VARCHAR(25) NOT NULL, afm BIGINT NOT NULL, roleid INT NOT NULL, email VARCHAR(100) NOT NULL, tel VARCHAR(25) NOT NULL, companyid INT REFERENCES company(companyid), isAnastoli INT NOT NULL DEFAULT 0, PRIMARY KEY (afm));
+CREATE TABLE workschedule (date DATE NOT NULL, workdaytype INT NOT NULL, afm BIGINT NOT NULL REFERENCES user(afm), PRIMARY KEY (date, afm));

@@ -98,18 +98,20 @@ class Navbar extends Component {
                     <div className="navitem" onClick={ () => this.dropDownDrop(0) }>
                         <FontAwesomeIcon icon={faFolder} className="icon"/>
                         <p className="text">ΘΕΜΑΤΑ</p>
+                        { this.state.dropDownVisible && this.state.visibleID === 0 ? <Navdropdown closeDrop={this.closeDrop} options={optionArray}/> : null }
+
                     </div>
                     <div className="navitem" onClick={ () => this.dropDownDrop(1) }>
                         <FontAwesomeIcon icon={faToolbox} className="icon"/>
                         <p className="text">ΥΠΗΡΕΣΙΕΣ</p>
+                        { this.state.dropDownVisible && this.state.visibleID === 1 ? <Navdropdown closeDrop={this.closeDrop} options={optionArray}/> : null }
                     </div>
                     <div className="navitem" onClick={ () => this.dropDownDrop(2) }>
                         <FontAwesomeIcon icon={faPhone} className="icon"/>
                         <p className="text">ΕΠΙΚΟΙΝΩΝΙΑ</p>
+                        { this.state.dropDownVisible && this.state.visibleID === 2 ? <Navdropdown closeDrop={this.closeDrop} options={optionArray}/> : null }
                     </div>
                 </nav>
-
-            { this.state.dropDownVisible ? <Navdropdown closeDrop={this.closeDrop} options={optionArray}/> : null }
             </div>
         );
     }

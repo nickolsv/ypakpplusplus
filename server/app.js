@@ -1,4 +1,3 @@
-const { default: userEvent } = require('@testing-library/user-event');
 const express = require('express')
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
@@ -92,7 +91,19 @@ app.get("/api/getWorkschedule/:afm/:month-:year", (req, res) =>
     } )
 });
 
+app.get("/api/getuserdata/:afm", (req, res) =>
+{
 
+    con.query(  "SELECT user.firstname, user.lastname, user.email, user.tel, user.roleid, company.companyname " +
+                "FROM user, company " + 
+                "WHERE user.afm = " + con.escape(req.params.afm) + " " +
+                "AND company.companyid = user.companyid",
+    function(error, result) {
+        if(error) throw error;
+        res.status(200);
+        res.send(JSON.stringify(result[0]));
+    })
+})
 
 app.post('/api/register', (req, res) => 
 {
@@ -215,7 +226,7 @@ app.post("/api/updateWorkschedule/:afm/:startyear-:startmonth-:startday/:endyear
     var sqlQuery = "REPLACE INTO workschedule(date,afm,workdaytype) VALUES ";
     var sqlVals = "";
     var comma = "";
-    console.log(startDate);
+
     while( startDate.daysBetween(endDate) >= 0 )
     {
         sqlVals = comma + "('" + startDate.year + "/" + startDate.month + "/" + startDate.day + "'," + req.params.afm + "," + req.params.scheduletype + ")"
@@ -232,6 +243,15 @@ app.post("/api/updateWorkschedule/:afm/:startyear-:startmonth-:startday/:endyear
     })
 
 });
+
+app.post("/api/setuserdata/:afm/:mail/:tel/:roleid", (req,res) => {
+    
+    con.query(  "UPDATE user SET user.email = " + con.escape(req.params.mail) + ", user.tel = " + con.escape(req.params.tel) + ", user.roleid = " + con.escape(req.params.roleid) +
+                "WHERE user.afm = " + con.escape(req.params.afm), function(error, result) {
+                    if(error) throw error;
+                    res.sendStatus(200);
+                })
+})
 
 
 app.listen(port, () => console.log(`Application listening on port ${port}`))
