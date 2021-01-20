@@ -10,7 +10,8 @@ import Login from "./components/Login";
 import {ReportLink, ReportPage} from './components/Report';
 import {ChoicesLink, ChoicesPage} from './components/Epiloges';
 import {Contact, Terms, About} from './components/FooterLinks';
-import Register from "./components/Register";
+import{CovidLink, CovidPage} from './components/CovidPage';
+// import Register from "./components/Register";
 
 function App() {
 
@@ -23,6 +24,8 @@ function App() {
         <Route exact={true} path="/">
           <Home />
           <Banner />
+          <CovidLink/>
+          <ChoicesLink/>
         </Route>
 
 
@@ -30,7 +33,7 @@ function App() {
           <Login loginType="1" />
         </Route>
 
-        <Route exact={true} path="/register" component={Register} />
+        {/* <Route exact={true} path="/register" component={Register} /> */}
         <Route exact={true} path="/appointment" component={Appointment} />
         <Route exact={true} path="/covid19info" component={BannerLink} />
         <Route exact={true} path="/contact" component={Contact} />
@@ -38,6 +41,7 @@ function App() {
         <Route exact={true} path="/choices" component={ChoicesPage}/>
         <Route exact={true} path="/terms" component={Terms}/>
         <Route exact={true} path="/about" component={About}/>
+        <Route exact={true} path="/covid19" component={CovidPage}/>
 
         <Footer />
       </Router>

@@ -4,16 +4,30 @@
     justify-content: space-evenly;
     user-select: none;
     background-color: lightblue;
+    box-shadow: 1px 8px 10px rgb(216, 215, 215);
 }
 
 .navitem{
     display: inline-block;
     cursor: pointer;
+    font-size: medium;
 }
 
-.icon{
-    font-size: 100px;
+.nav-icon1{
+    font-size: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
- /* .text{
-    font-size:10px;
- } */
+
+.nav-icon2{
+    font-size: 40px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.nav-icon3{
+    font-size: 40px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+

@@ -5,6 +5,7 @@
     background-color: lightgray;
     position: absolute;
     bottom: 0;
+    position: relative;
 }
 
 .footer-links{

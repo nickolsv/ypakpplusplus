@@ -1,17 +1,17 @@
 .navdropdown {
     position: absolute;
-    width: calc(100% - 2px);
+    width: 300px;
     height: 360px;
     z-index: 5;
     background-color: white;
-    border-style: solid;
+    /* border-style: solid;
     border-width: 1px;
-    border-color: black;
-    border-radius: 10px;
+    border-color: black; */
+    border-radius: 8px;
+    box-shadow: 0px 0px 25px rgb(216, 215, 215);
 }
 
 .nav-col {
     width: 33%;
-    display: inline-block;
     text-align: center;
 }
