@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Date, getDaysSinceEpoch, getDaysOfMonth} from './DateTime.js';
+import { Date, getDaysSinceEpoch, getDaysOfMonth} from '../imports/DateTime.js';
+import {serverAddress} from '../imports/global';
 import './Calendar.css';
 
 const weekdaysList = {
@@ -26,8 +27,6 @@ const monthsList = {
     11: "Νοέμβριος",
     12: "Δεκέμβριος"
 }
-
-// TODO: CalendarDay classes for Days Off/Working/Remote -- CalendarType-dependent
 
 
 function CalendarDay(props) {
@@ -192,7 +191,7 @@ class Calendar extends Component {
 
     getNewWorkschedule(month,year)
     {
-        fetch("http://localhost:3001/api/getWorkschedule/" + this.props.afm + "/" + month + "-" + year)
+        fetch( serverAddress + "/api/getWorkschedule/" + this.props.afm + "/" + month + "-" + year)
         .then( result =>  result.json())
         .then( (res) => {
             var newState = Object.assign({},this.state);

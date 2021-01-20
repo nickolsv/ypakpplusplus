@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {serverAddress} from '../imports/global';
 
 class Register extends Component {
 
@@ -73,7 +74,7 @@ class Register extends Component {
     render() {
 
         // /register as default endpoint, unless specified otherwise
-        var endPoint = this.props.endPoint ? this.props.endPoint : "http://localhost:3001/api/register";
+        var endPoint = this.props.endPoint ? this.props.endPoint : serverAddress + "/api/register";
 
         var inputArray = []
         inputArray.push(<input id="fname-input" name="fname" type="text" placeholder="Όνομα" required />)

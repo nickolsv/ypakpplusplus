@@ -3,7 +3,7 @@ const express = require('express')
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 const app = express()
-const port = 3001;
+const port = process.env.port || 3001;
 var Date = require("./DateTime")
 
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {serverAddress} from '../imports/global';
 import './EmployeeSelector.css'
 
 class EmployeeSelector extends Component {
@@ -25,7 +26,7 @@ class EmployeeSelector extends Component {
         var val= document.getElementById("employee-search").value;
 
         if( val !== "" )
-            fetch("http://localhost:3001/api/get-employees/" + sessionStorage.getItem("afm") + "/" + val)
+            fetch( serverAddress + "/api/get-employees/" + sessionStorage.getItem("afm") + "/" + val)
             .then( (response) => response.json() )
             .then(
                 (result) => {

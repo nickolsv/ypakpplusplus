@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EmployeeSelector from './EmployeeSelector';
+import {serverAddress} from '../imports/global';
 
 
 class Anastoli extends Component {
@@ -20,7 +21,7 @@ class Anastoli extends Component {
     updateStatus = () => {
         var afm = this.state.employeeData.afm;
         if(afm)
-            fetch("http://localhost:3001/api/anastoliToggle/" + afm, {
+            fetch(serverAddress + "/api/anastoliToggle/" + afm, {
                 method: "POST",
             })
             .then( (result) => {

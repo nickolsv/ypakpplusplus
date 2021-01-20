@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EmployeeSelector from './EmployeeSelector';
 import Calendar from './Calendar';
+import {serverAddress} from '../imports/global';
 
 
 // TODO: Display existing schedule on calendar
@@ -48,7 +49,7 @@ class Workschedule extends Component {
         newState.endDate = null;
         newState.stage = 0;
         newState.scheduleType = 0;
-        this.setState(newState);   
+        this.setState(newState);
     }
 
     updateStatus = () => {
@@ -58,7 +59,7 @@ class Workschedule extends Component {
         var scheduleType = this.state.scheduleType;
 
         if(afm)
-            fetch("http://localhost:3001/api/updateWorkschedule/" 
+            fetch(serverAddress + "/api/updateWorkschedule/" 
                   + afm + "/"
                   + startDate.year + "-" + startDate.month + "-" + startDate.day + "/"
                   + endDate.year + "-" + endDate.month + "-" + endDate.day + "/"

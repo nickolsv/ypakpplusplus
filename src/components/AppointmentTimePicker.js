@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './AppointmentTimePicker.css';
-import {Time} from './DateTime.js';
+import {Time} from '../imports/DateTime.js';
 
 function AppointmentTimeSlot(props) {
 
