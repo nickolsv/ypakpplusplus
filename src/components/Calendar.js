@@ -113,6 +113,24 @@ class CalendarMonth extends Component{
             else if( selStart !== null && currDate.daysBetween(selStart) === 0)
                 calDayClass = "date-selected";
             
+            if( this.props.displaySchedule)
+            {
+                if( calDayClass === "date-unselected")
+                for (let index = 0; index < this.props.scheduleProps.vacationDays.length; index++) 
+                    if( currDate.daysBetween(this.props.scheduleProps.vacationDays[index]) === 0 )
+                        calDayClass = "date-vacation";
+            
+                if( calDayClass === "date-unselected")
+                    for (let index = 0; index < this.props.scheduleProps.workDays.length; index++) 
+                        if( currDate.daysBetween(this.props.scheduleProps.workDays[index]) === 0 )
+                            calDayClass = "date-work";
+
+                if( calDayClass === "date-unselected")
+                    for (let index = 0; index < this.props.scheduleProps.remoteDays.length; index++) 
+                        if( currDate.daysBetween(this.props.scheduleProps.remoteDays[index]) === 0 )
+                            calDayClass = "date-remote";
+            }
+            
             currElem.push(<CalendarDay class={calDayClass} dayNumber={currDay+1} onDateSelect={this.dateSelector}/>);
             currDay+=1
         }
@@ -156,11 +174,48 @@ class Calendar extends Component {
         remoteDays: []
     }
 
+    constructor(props){
+        super(props)
+
+    }
+
     componentDidMount(){
-        // TODO:
-        // On Component mount, request calendar schedule from backend
-        // if calendarType prop is schedule
-        // then update state accordingly
+        if( this.props.displaySchedule)
+            this.getNewWorkschedule(1,2021)
+    }
+
+    componentDidUpdate(prevProps, prevState)
+    {
+        if( this.props.displaySchedule && (prevState.month !== this.state.month || prevState.year !== this.state.year))
+            this.getNewWorkschedule(this.state.month, this.state.year)
+    }
+
+    getNewWorkschedule(month,year)
+    {
+        fetch("http://localhost:3001/api/getWorkschedule/" + this.props.afm + "/" + month + "-" + year)
+        .then( result =>  result.json())
+        .then( (res) => {
+            var newState = Object.assign({},this.state);
+
+            for (let index = 0; index < res.length; index++) {
+                const element = res[index];
+
+                var tempdate = element.date.split('-');
+
+                var date = new Date(Number(tempdate[2]), Number(tempdate[1]), Number(tempdate[0]));
+                var type = element.workdaytype
+
+
+                if( type === 2 )
+                    newState.vacationDays.push(date)
+                else if( type === 1 )
+                newState.remoteDays.push(date)
+                else
+                    newState.workDays.push(date)
+            }
+            this.setState(newState);
+        })
+
     }
 
     monthChange(offset){
@@ -238,10 +293,18 @@ class Calendar extends Component {
             selectEnd: this.state.selectEnd,
         };
 
+        var scheduleProps = {
+            workDays : this.state.workDays,
+            vacationDays: this.state.vacationDays,
+            remoteDays : this.state.remoteDays,
+            afm: this.props.afm
+        };
+        
+
         return(
             <div className="calendar-element">
                 <div className="calendar-month"> {monthsList[this.state.month]} {this.state.year}</div>
-                <CalendarMonth year={this.state.year} month={this.state.month} onDateSelect={this.dateSelector} selectProps={selectProps}/>
+                <CalendarMonth year={this.state.year} month={this.state.month} displaySchedule={this.props.displaySchedule} onDateSelect={this.dateSelector} selectProps={selectProps} scheduleProps={scheduleProps}/>
                 <div className="calendar-nav">
                     <span className="calendar-navbutton" onClick={() => this.monthChange(-1)}>&lt;</span>
                     <span className="calendar-navbutton" onClick={() => this.monthChange(1)}>&gt;</span>

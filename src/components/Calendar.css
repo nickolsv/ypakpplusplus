@@ -3,6 +3,21 @@
     background-color: deepskyblue;
 }
 
+.date-work {
+    color: black;
+    background-color: rgb(187, 89, 59);
+}
+
+.date-remote {
+    color: black;
+    background-color: rgb(197, 197, 42);
+}
+
+.date-vacation {
+    color: black;
+    background-color: rgb(162, 223, 71);
+}
+
 .calendar-element {
     display: inline-block;
 }

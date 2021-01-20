@@ -1,15 +1,18 @@
 import './Navdropdown.css'
+import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+
 
 function NavdropdownColumn(props) {
     
     var title = null;
     if( props.title != null )   title = (<div className="nav-col-title">{props.title}</div>)
     
-    // TODO Change <a href> to <links>
     var renderArray = [];
     props.links.forEach(link => {
-        renderArray.push(<a className="nav-col-element" href={link.href}>{link.title}</a>)
+        renderArray.push(<Link onClick={props.closeDrop} className="nav-col-element" to={link.href}>{link.title}</Link>)
     });
+
 
     return(
         <div className="nav-col">
@@ -19,19 +22,42 @@ function NavdropdownColumn(props) {
     )
 }
 
-function Navdropdown(props) {
+class Navdropdown extends Component {
     
-    var renderArray = [];
-    props.options.forEach(
-        element => {
-            renderArray.push(<NavdropdownColumn title={element.title} links={element.links}/>);
-    });
-    
-    return(
-        <div className="navdropdown">
-            {renderArray}
-        </div>
-    );
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClick, false);
+    }
+
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClick, false);
+    }
+
+    handleClick = (e) => {
+        if( this.node.contains(e.target))
+        {
+            return;
+        }
+
+        this.props.closeDrop()
+    }
+
+
+    render()
+    {
+        var renderArray = [];
+        this.props.options.forEach(
+            element => {
+                renderArray.push(<NavdropdownColumn closeDrop={this.props.closeDrop} title={element.title} links={element.links}/>);
+        });
+        
+        return(
+            <div className="navdropdown" ref={node => this.node = node}>
+                {renderArray}
+            </div>
+        );
+    }
+
 }
 
 export default Navdropdown;

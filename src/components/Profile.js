@@ -54,8 +54,10 @@ class Profile extends Component{
 
         return (
             <div className="profile" onClick={ () => this.dropdownDrop()}>
-                {sessionStorage.getItem("afm") ? <p className="user-name">{sessionStorage.fname + " " + sessionStorage.lname}</p> : null }
-                <FontAwesomeIcon icon={faUserCircle} className="user"/>
+                <div className="profile-icon-text">
+                    {sessionStorage.getItem("afm") ? <p className="user-name">{sessionStorage.fname + " " + sessionStorage.lname}</p> : null }
+                    <FontAwesomeIcon icon={faUserCircle} className="user"/>
+                </div>
                 {this.state.dropdownVisible ? profile : null}
             </div>
         );

@@ -13,10 +13,9 @@ import {Contact, Terms, About} from './components/FooterLinks';
 import Register from "./components/Register";
 import Anastoli from "./components/Anastoli";
 import Workschedule from "./components/Workschedule";
+import Calendar from './components/Calendar';
 
 function App() {
-
-  // TODO: In /test route: add roleid in  sessionstorage & query whether the user role is employer instead of just checking for afm != null
   return (
     <div className="App">
       <Router>
@@ -36,11 +35,12 @@ function App() {
         <Route exact={true} path="/workschedule">
           {sessionStorage.getItem("afm") 
               ? ( sessionStorage.getItem("role") === "1" ? <Workschedule /> : <Redirect to="/"/> )
-              : <Login loginType="1" redirPage="/anastoli" />}
+              : <Login loginType="1" redirPage="/workschedule" />}
         </Route>
 
         <Route exact={true} path="/register" render={() => sessionStorage.getItem("afm") ? <Redirect to="/"/> : <Register /> }/>
         <Route exact={true} path="/login" render={() => sessionStorage.getItem("afm") ? <Redirect to="/"/> : <Login loginType="1" redirPage="/" /> }/>
+        <Route exact={true} path="/calendar" render={() => !sessionStorage.getItem("afm") ? <Redirect to="/"/> : <Calendar type="none" afm={sessionStorage.getItem("afm")} displaySchedule={true} dateSelector={() => {}} /> }/>
 
         <Route exact={true} path="/appointment" component={Appointment} />
         <Route exact={true} path="/covid19info" component={BannerLink} />

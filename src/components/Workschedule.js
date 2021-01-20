@@ -36,7 +36,7 @@ class Workschedule extends Component {
 
     dateConfirm = () => {
         var newState = Object.assign({},this.state);
-                            
+        newState.scheduleType = document.getElementById("role-select").value;
         newState.stage = 2;
         this.setState(newState);
     }
@@ -83,17 +83,18 @@ class Workschedule extends Component {
  
     render()
     {
+        console.log(this.employeeData);
         var renderElem;
         if( this.state.stage === 0 )
             renderElem = (<EmployeeSelector employeeSelect={this.employeeSelect} />)
-        else if( this.state.stage === 1 )
+        else if( this.state.stage === 1 && this.state.employeeData !== null )
             renderElem = (<div>
                     <select name="role" id="role-select">
                         <option value="0" selected>Εργασία</option>
                         <option value="1">Τηλεργασία</option>
-                        <option value="1">Άδεια </option>
+                        <option value="2">Άδεια </option>
                     </select>
-                <Calendar type="range-select" dateSelector={this.dateSelector} />
+                <Calendar type="range-select" displaySchedule={true} dateSelector={this.dateSelector} afm={this.state.employeeData.afm}/>
                 { this.state.startDate ? <button onClick={this.dateConfirm}> Επιλογή </button> : null}
                 <button onClick={this.reset}>Επιστροφή</button>
             </div>)

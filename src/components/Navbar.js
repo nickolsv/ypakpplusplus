@@ -13,6 +13,13 @@ class Navbar extends Component {
         visibleID: 1                    // ID of expanded navbar element (if any)
     }
 
+    closeDrop = () => {
+        var newState = Object.assign({},this.state);
+        newState.dropDownVisible = false;
+        newState.visibleID = 1;
+        this.setState(newState);
+    }
+
     dropDownDrop(clickedID)
     {
         // Expands/hides the clicked navigation bar item
@@ -37,25 +44,38 @@ class Navbar extends Component {
         var dropdownLinks = [[
                                 {   title: null, 
                                     links: [
-                                        {title: "Test1", href: "/test1"}, 
-                                        {title: "Test2", href: "/test2"}]
+                                        {title: "Μίσθωση", href: ""}, 
+                                        {title: "Άδειες Εργαζομένων", href: ""}]
                                 },
                                 {   title: null, 
                                     links: [
-                                        {title: "Test3", href: "/test3"}, 
-                                        {title: "Test4", href: "/test4"}]
+                                        {title: "Ασφαλιση", href: ""}, 
+                                        {title: "Συμβάσεις Εργασίας", href: ""}]
                                 },
+                                {   title: null, 
+                                    links: [
+                                        {title: "Νομοθεσία", href: ""}, 
+                                        {title: "Ευκαιρίες Κατάρτισης", href: ""}]
+                                },
+                                {   title: null, 
+                                    links: [
+                                        {title: "Covid-19", href: "/choices"}]
+                                }
                             ],
                             [
-                                {   title: "Title1", 
-                                    links: [
-                                        {title: "TitleTest1", href: "/ttest1"}, 
-                                        {title: "TitleTest2", href: "/ttest2"}]
+                                {   title: "Για Εργαζόμενους", 
+                                    links: [ 
+                                        {title: "Αρχείο Εργασιακής Κατάστασης", href: "/calendar"}]
                                 },
-                                {   title: "Title2", 
+                                {   title: "Για Εργοδότες", 
                                     links: [
-                                        {title: "TitleTest3", href: "/ttest3"}, 
-                                        {title: "TitleTest4", href: "/ttest4"}]
+                                        {title: "Δήλωση / Άρση Αναστολής Εργασίας", href: "/anastoli"}, 
+                                        {title: "Δήλωση Αδειών / Τηλεργασίας Εργαζομένων", href: "/workschedule"}]
+                                },
+                                {   title: "Κοινές", 
+                                    links: [
+                                        {title: "Κλείστε Ένα Ραντεβού", href: "/appointment"}, 
+                                        {title: "Αναφορά Κινδύνων / Παραβίασης Νόμων", href: "/report"}]
                                 },
                             ],
                             [
@@ -67,6 +87,7 @@ class Navbar extends Component {
                                 },
                             ],
                         ]
+                        
         
         // The value of visibleID stored in the component's state corresponds to the index of the dropdownlinks array
         // whose contents will be displayed. visibleID is changed through the dropDownDrop function
@@ -88,7 +109,7 @@ class Navbar extends Component {
                     </div>
                 </nav>
 
-            { this.state.dropDownVisible ? <Navdropdown options={optionArray}/> : null }
+            { this.state.dropDownVisible ? <Navdropdown closeDrop={this.closeDrop} options={optionArray}/> : null }
             </div>
         );
     }

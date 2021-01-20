@@ -4,12 +4,22 @@ var bodyParser = require('body-parser');
 var mysql = require('mysql');
 const app = express()
 const port = 3001;
+var Date = require("./DateTime")
+
+
+let config = {
+    dateStrings: [
+        'DATE',
+        'DATETIME'
+    ]
+};
 
 var con = mysql.createConnection({
     host: "localhost",
     user: "eamuser",
     password: "EAM1EAM2eam#eam$",
-    database: "ypakp"
+    database: "ypakp",
+    dateStrings: true,
 });
 
 app.use(bodyParser.json());
@@ -48,28 +58,6 @@ app.get('/api/appointment/:year-:month-:day', (req, res) =>
     res.json(unavailable);
 })
 
-// Work Schedule Route
-app.get('/api/workschedule/:userID', (req, res) => 
-{
-    // TODO: Fetch workSchedule from database
-    var workSchedule = {
-        daysRemote : [
-            "5/1/2021",
-            "7/1/2021",
-            "9/1/2021",
-        ],
-        daysOff : [
-            "6/1/2021",
-        ],
-        daysWork : [
-            "4/1/2021",
-            "8/1/2021",
-            "9/1/2021",
-        ],
-    }
-    res.json(workSchedule);
-});
-
 // Employee search Route
 app.get("/api/get-employees/:employerafm/:searchquery", (req,res) =>
 {
@@ -86,6 +74,22 @@ app.get("/api/get-employees/:employerafm/:searchquery", (req,res) =>
         if(error) throw error;
         res.send(JSON.stringify(result));
     });
+});
+
+
+app.get("/api/getWorkschedule/:afm/:month-:year", (req, res) => 
+{
+    con.query(  "SELECT workschedule.date,workschedule.workdaytype " + 
+                "FROM workschedule " + 
+                "WHERE workschedule.afm = " + con.escape(req.params.afm) + " " +
+                "AND YEAR(workschedule.date) = " + con.escape(req.params.year) + " " +
+                "AND MONTH(workschedule.date) = " + con.escape(req.params.month),
+    function(error, result) {
+        if(error) throw error;
+        
+        res.status(200);
+        res.send(JSON.stringify(result));
+    } )
 });
 
 
@@ -117,6 +121,8 @@ app.post('/api/register', (req, res) =>
                         // Then register employer/employee to user DB
                         con.query("INSERT INTO user(firstname,lastname,afm,roleid,email,tel,companyid) VALUES (" + con.escape(fname) + "," + con.escape(lname) + "," + con.escape(afm) + "," + con.escape(role) + "," + con.escape(email) + "," + con.escape(tel) + "," + result2.insertId + ")", function(error) {
                             if(error) throw error;
+                            
+                            res.sendStatus(200);
                         });
                     });
                 }
@@ -132,6 +138,7 @@ app.post('/api/register', (req, res) =>
                                 // Company has no employer, insert dude
                                 con.query("INSERT INTO user(firstname,lastname,afm,roleid,email,tel,companyid) VALUES (" + con.escape(fname) + "," + con.escape(lname) + "," + con.escape(afm) + "," + con.escape(role) + "," + con.escape(email) + "," + con.escape(tel) + "," + result[0].companyid + ")", function(error) {
                                     if(error) throw error;
+                                    res.sendStatus(200);
                                 });
                             }
                             else
@@ -147,6 +154,8 @@ app.post('/api/register', (req, res) =>
                         // If role is employee insert user:
                         con.query("INSERT INTO user(firstname,lastname,afm,roleid,email,tel,companyid) VALUES (" + con.escape(fname) + "," + con.escape(lname) + "," + con.escape(afm) + "," + con.escape(role) + "," + con.escape(email) + "," + con.escape(tel) + "," + result[0].companyid + ")", function(error) {
                             if(error) throw error;
+                            res.sendStatus(200);
+
                         });            
                     }
             });
@@ -196,7 +205,33 @@ app.post('/api/anastoliToggle/:employeeafm', (req, res) =>
             res.sendStatus(200);
         })
     })
-})
+});
+
+
+app.post("/api/updateWorkschedule/:afm/:startyear-:startmonth-:startday/:endyear-:endmonth-:endday/:scheduletype", (req, res) => {
+    var startDate = new Date(Number(req.params.startday), Number(req.params.startmonth), Number(req.params.startyear))
+    var endDate = new Date(Number(req.params.endday), Number(req.params.endmonth), Number(req.params.endyear))
+
+    var sqlQuery = "REPLACE INTO workschedule(date,afm,workdaytype) VALUES ";
+    var sqlVals = "";
+    var comma = "";
+    console.log(startDate);
+    while( startDate.daysBetween(endDate) >= 0 )
+    {
+        sqlVals = comma + "('" + startDate.year + "/" + startDate.month + "/" + startDate.day + "'," + req.params.afm + "," + req.params.scheduletype + ")"
+
+        sqlQuery += sqlVals
+        startDate.incrementDay();
+        comma = ","
+
+    }
+
+    con.query(sqlQuery, function (error,result) {
+        if(error) throw error;
+        res.sendStatus(200);
+    })
+
+});
 
 
 app.listen(port, () => console.log(`Application listening on port ${port}`))
